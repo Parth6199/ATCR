@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request / Complaint Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              light: '#dbeafe',
+              DEFAULT: '#3b82f6',
+              dark: '#1e40af'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-primary-light text-gray-900 dark:bg-gray-900 dark:text-white p-4 transition duration-300">
+  <div class="max-w-xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center text-primary-dark">New Connection / Complaint Form</h1>
+
+    <button onclick="toggleTheme()" class="mb-4 px-3 py-1 rounded bg-primary-dark text-white hover:bg-primary">Toggle Light/Dark Mode</button>
+
+    <form id="subscriberForm" class="space-y-4">
+      <input type="text" name="Name" placeholder="Name" required class="w-full p-2 border border-gray-300 rounded" />
+      <input type="text" name="Designation" placeholder="Designation" required class="w-full p-2 border border-gray-300 rounded" />
+      <input type="text" name="Department" placeholder="Department" required class="w-full p-2 border border-gray-300 rounded" />
+      <input type="text" name="AutoTel" placeholder="Auto Telephone Number (if any)" class="w-full p-2 border border-gray-300 rounded" />
+      <input type="tel" name="Phone" placeholder="Phone Number" required class="w-full p-2 border border-gray-300 rounded" />
+
+      <select name="RequestType" id="requestType" required onchange="toggleComplaintFields()" class="w-full p-2 border border-gray-300 rounded">
+        <option value="">-- Select Request Type --</option>
+        <option value="New Connection">New Connection</option>
+        <option value="Complaint">Complaint</option>
+      </select>
+
+      <div id="complaintFields" style="display:none;">
+        <select name="ComplaintType" class="w-full p-2 border border-gray-300 rounded">
+          <option value="Internet">Internet</option>
+          <option value="Telephone">Telephone</option>
+        </select>
+        <textarea name="ComplaintDetails" placeholder="Complaint Details" rows="3" class="w-full p-2 border border-gray-300 rounded"></textarea>
+      </div>
+
+      <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-primary-dark">Submit</button>
+    </form>
+
+    <p id="responseMsg" class="mt-4 text-center font-medium"></p>
+  </div>
+
+  <script>
+    function toggleComplaintFields() {
+      const type = document.getElementById("requestType").value;
+      document.getElementById("complaintFields").style.display = type === "Complaint" ? "block" : "none";
+    }
+
+    function toggleTheme() {
+      document.documentElement.classList.toggle("dark");
+      const isDark = document.documentElement.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    }
+
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
