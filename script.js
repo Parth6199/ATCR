@@ -15,7 +15,7 @@ document.getElementById("subscriberForm").addEventListener("submit", function (e
     Status: "Pending"
   };
 
-  const scriptURL = "https://script.google.com/macros/s/AKfycbw72Pj1hBHgv_69B8mhseZI3jvNauKpKc0CgFZ_oO9sLYjSnKekrP8g9quwtm3sZrXVqA/exec";
+  const scriptURL = "https://script.google.com/macros/s/YOUR_DEPLOYED_LINK/exec";
 
   fetch(scriptURL, {
     method: "POST",
