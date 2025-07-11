@@ -60,22 +60,22 @@
     <p id="responseMsg" class="mt-4 text-center font-medium"></p>
   </div>
 
-  <script>
-    function toggleComplaintDetails() {
-      const type = document.getElementById("requestType").value;
-      document.getElementById("complaintDetails").style.display = type === "Complaint" ? "block" : "none";
-    }
+ <script>
+  function toggleComplaintFields() {
+    const type = document.getElementById("requestType").value;
+    document.getElementById("complaintDetails").style.display = type === "Complaint" ? "block" : "none";
+  }
 
-    function toggleTheme() {
-      document.documentElement.classList.toggle("dark");
-      const isDark = document.documentElement.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    }
+  function toggleTheme() {
+    document.documentElement.classList.toggle("dark");
+    const isDark = document.documentElement.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }
 
-    if (localStorage.getItem("theme") === "dark") {
-      document.documentElement.classList.add("dark");
-    }
-  </script>
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+</script>
 
   <script src="script.js"></script>
 <p class="fixed bottom-2 right-4 text-xs italic text-black dark:text-white opacity-70">
