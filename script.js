@@ -1,8 +1,7 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyLiEyem26egy4Fm3p36oVJ3MMaK49qsQuD9V6UufdBkiO7C6Ez7OEq-1hvQkAk9SV2cA/exec';
-
 document.getElementById("subscriberForm").addEventListener("submit", function (e) {
   e.preventDefault();
-  const form = e.target;
+
+  const form = document.getElementById("subscriberForm");
 
   const formData = {
     Name: form.Name.value,
@@ -12,23 +11,24 @@ document.getElementById("subscriberForm").addEventListener("submit", function (e
     Phone: form.Phone.value,
     RequestType: form.RequestType.value,
     ComplaintType: form.ComplaintType ? form.ComplaintType.value : '',
-    ComplaintDetails: form.ComplaintDetails ? form.ComplaintDetails.value : ''
+    ComplaintDetails: form.ComplaintDetails ? form.ComplaintDetails.value : '',
+    Status: "Pending"
   };
+
+  const scriptURL ="https://script.google.com/macros/s/AKfycbxSMQxzGvBsJZUeem5YffSzrm8Z9U-aZTnqyzrtoBV9rMpOckv0VcFEHX2j5QIeWYZb6Q/exec";
 
   fetch(scriptURL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
     body: JSON.stringify(formData)
   })
-    .then(res => res.text())
-    .then(data => {
+    .then((res) => res.text())
+    .then((data) => {
       document.getElementById("responseMsg").textContent = "✅ Submitted successfully!";
       form.reset();
+      toggleComplaintFields();
     })
-    .catch(err => {
-      console.error("Error!", err);
-      document.getElementById("responseMsg").textContent = "❌ Something went wrong!";
+    .catch((err) => {
+      console.error("Error!", err.message);
+      document.getElementById("responseMsg").textContent = "❌ Something went wrong.";
     });
 });
