@@ -46,7 +46,7 @@
         <option value="Complaint">Complaint</option>
       </select>
 
-      <div id="complaintFields" style="display:none;">
+      <div id="complaintDetails" style="display:none;">
         <select name="ComplaintType" class="w-full p-2 border border-gray-300 rounded">
           <option value="Internet">Internet</option>
           <option value="Telephone">Telephone</option>
@@ -61,9 +61,9 @@
   </div>
 
   <script>
-    function toggleComplaintFields() {
+    function toggleComplaintDetails() {
       const type = document.getElementById("requestType").value;
-      document.getElementById("complaintFields").style.display = type === "Complaint" ? "block" : "none";
+      document.getElementById("complaintDetails").style.display = type === "Complaint" ? "block" : "none";
     }
 
     function toggleTheme() {
