@@ -10,7 +10,7 @@ document.getElementById("subscriberForm").addEventListener("submit", function (e
     AutoTel: form.AutoTel.value,
     Phone: form.Phone.value,
     RequestType: form.RequestType.value,
-    ComplaintType: form.ComplaintType ? form.ComplaintType.value : '',
+    ComplaintType: form.ConnectionType ? form.ConnectionType.value : '',
     ComplaintDetails: form.ComplaintDetails ? form.ComplaintDetails.value : '',
     Status: "Pending"
   };
