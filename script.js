@@ -22,10 +22,18 @@ document.getElementById("subscriberForm").addEventListener("submit", function (e
     body: JSON.stringify(formData)
   })
     .then((res) => res.text())
-    .then((data) => {
-      document.getElementById("responseMsg").textContent = "✅ Submitted successfully!";
-      form.reset();
-      toggleComplaintFields();
+    .then(data => {
+  if (form.RequestType.value === "New Connection") {
+    const popup = document.getElementById("connectionPopup");
+    popup.classList.remove("opacity-0", "pointer-events-none");
+    setTimeout(() => {
+      popup.classList.add("opacity-0", "pointer-events-none");
+    }, 4000);
+  }
+
+  document.getElementById("responseMsg").textContent = "✅ Submitted successfully!";
+  form.reset();
+  toggleComplaintFields();
     })
     .catch((err) => {
       console.error("Error!", err.message);
