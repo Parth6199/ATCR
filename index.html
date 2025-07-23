@@ -90,5 +90,23 @@
 <div id="connectionPopup" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-800 text-white text-center px-6 py-4 rounded-xl shadow-lg opacity-0 pointer-events-none transition duration-300 z-50">
   🔔 Please forward a letter to Sr. DSTE Office for new connections.
 </div>
+<!-- Complaint Popup -->
+<div id="complaintPopup" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+bg-blue-800 text-white text-center px-6 py-4 rounded-xl shadow-lg opacity-0 pointer-events-none 
+transition duration-300 z-50">
+  Your Complaint ID: <span id="complaintIDText" class="font-bold"></span>
+</div>
+<script>
+  function toggleTheme() {
+    document.documentElement.classList.toggle("dark");
+    const isDark = document.documentElement.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }
+
+  // Load user's saved theme on page load
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+</script>
 </body>
 </html>
